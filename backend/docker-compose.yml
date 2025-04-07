@@ -1,0 +1,21 @@
+services:
+  mysql:
+    image: mysql:9.2-oraclelinux9
+    container_name: mysql-db
+    environment:
+      MYSQL_DATABASE: toanthaycong
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_toanthaycong_data:/var/lib/mysql
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: mailhog
+    ports:
+      - '1025:1025'
+      - '8025:8025'  # Web UI for viewing emails
+
+volumes:
+  mysql_toanthaycong_data:
