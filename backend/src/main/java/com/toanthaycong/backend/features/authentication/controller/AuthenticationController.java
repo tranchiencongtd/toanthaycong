@@ -47,7 +47,7 @@ public class AuthenticationController {
     @PutMapping("/send-password-reset-token")
     public String sendPasswordResetToken(@RequestParam String email) {
         authenticationUserService.sendPasswordResetToken(email);
-        return "Token lấy lại mật khẩu đã gưửi thành công.";
+        return "Token lấy lại mật khẩu đã gửi thành công.";
     }
 
     @PutMapping("/reset-password")

@@ -18,8 +18,10 @@ public class LoadDatabaseConfiguration {
     @Bean
     public CommandLineRunner initDatabase(AuthenticationUserRepository authenticationUserRepository) {
         return args -> {
-            AuthenticationUser user = new AuthenticationUser("user@example.com", encoder.encode("user"));
-            authenticationUserRepository.save(user);
+            if (authenticationUserRepository.findByEmail("user@example.com").isEmpty()) {
+                AuthenticationUser user = new AuthenticationUser("user@example.com", encoder.encode("user"));
+                authenticationUserRepository.save(user);
+            }
         };
     }
 }
